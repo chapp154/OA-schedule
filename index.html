@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>OA Rozpis</title>
+  </head>
+
+  <body>
+    <section maincontent>
+        <div class="container-fluid pl-0 pr-0">
+            <div class="row gx-0">
+                <div class="col-12">
+                    <nav class="navbar navbar-light bg-light">
+                          <!-- Modal -->
+                          <button class="btn btn-success mr-2 ml-4" type="button" data-toggle="modal" data-target="#exampleModal">Přidat klienta</button>
+                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Přidat klienta</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="mb-3">
+                                    <div class="col-12 border rounded p-3">
+                                      <label for="name" class="form-label"><h5 class="text-center">Jméno</h5></label>
+                                      <input type="text" value="" class="form-control border-0 border-bottom bg-light" id="name" placeholder="Jmeno a prijmeni" required>
+                                    </div>
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <div class="col-12 border rounded p-3">
+                                      <label for="place" class="form-label"><h5 class="text-center">Dny</h5></label>
+                                      <input type="text" class="form-control border-0 border-bottom bg-light" id="place" placeholder="Dny asistence">
+                                    </div>
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <div class="col-12 border rounded p-3">
+                                      <h5 class="pb-2">Čas asistence</h5>
+                                      <label for="time1s" class="hours form-label">Od</label>
+                                      <input type="time" class="hours border-0 border-bottom bg-light p-2" id="time1s" required>
+                                      <label for="time1e" class="hours form-label ml-5">Do</label>
+                                      <input type="time" class="hours border-0 border-bottom bg-light p-2" id="time1e" required>
+                                    </div>
+                                  </div>
+
+                                  <div class="mb-3">
+                                    <div class="col-12 border rounded p-3">
+                                      <label for=details class="form-label"><h5 class="text-center">Detaily</h5></label>
+                                      <textarea id="details" class="form-control border-0 border-bottom bg-light" aria-label="With textarea" placeholder="Detaily"></textarea>
+                                    </div>
+                                  </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Zavřít</button>
+                                  <button id="save-client" type="button" class="btn btn-primary" data-dismiss="modal">Uložit</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button class="btn btn-secondary mt-2 mr-4 btn-print">Tisk</button>
+                      </nav>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid pl-4 pr-4 mt-3">
+            <div class="row">
+                <div class="col-12 p-0">
+                    <table class="table text-center table-bordered table-schedule">
+                        <thead class="th-days">
+                          <tr>
+                            <td>KLIENT</td>
+                            <td>PONDĚLI</td>
+                            <td>ÚTERÝ</td>
+                            <td>STŘEDA</td>
+                            <td>ČTVRTEK</td>
+                            <td>PÁTEK</td>
+                            <td>SOBOTA</td>
+                            <td>NEDĚLE</td>
+                          </tr>
+                        </thead>
+                          <tbody>
+                          </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="msg-box">
+
+    </div>
+
+    <!--New schedule form to clone-->
+    <div class="popover-box d-none">
+      <select name="assistant" id="" class="form-select mt-4 select-assistant">
+        <option value="0" selected disabled>Vybrat asistentku</option>
+        <option value="Danča Š.">Danča Š.</option>
+        <option value="Lenka S.">Lenka S.</option>
+        <option value="Pavla Ho.">Pavla Ho.</option>
+        <option value="Pavla Hl.">Pavla Hl.</option>
+        <option value="Katka Š.">Katka Š.</option>
+        <option value="Nikča Š.">Nikča Š.</option>
+        <option value="Lenka Š.">Lenka Š.</option>
+        <option value="Markéta B.">Markéta B.</option>
+
+      </select>
+
+      <button id="close-schedule" type="button" class="btn btn-dark btn-sm float-left schedule-close clearfix mt-4 mb-4">Zrušit</button>
+
+      <button id="confirm-schedule" type="button" class="btn btn-success btn-sm mt-4 mb-4 float-right mx-auto clearfix">Potvrdit asistenci</button>
+    </div>
+
+
+    <div class="test">
+
+    </div>
+
+
+
+
+<!-- BOOTSTRAP -->
+<!-- Popper.js first, then Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+<!--FIREBASE-->
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.17.2/firebase-firestore.js"></script>
+
+<script>
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCGA8wBDBEmWZacbYCw1Hl1Q9BnRtqDsMk",
+  authDomain: "neww-b8755.firebaseapp.com",
+  databaseURL: "https://neww-b8755.firebaseio.com",
+  projectId: "neww-b8755",
+  storageBucket: "neww-b8755.appspot.com",
+  messagingSenderId: "656865313968",
+  appId: "1:656865313968:web:361f744a796f3a12bc6775"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+var db = firebase.firestore();
+
+/////////////////////////////////
+
+
+</script>
+<script src="script/script.js"></script>
+
+  </body>
+</html>

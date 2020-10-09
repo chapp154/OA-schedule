@@ -1,0 +1,14 @@
+{
+  "name": "oa",
+  "version": "1.0.0",
+  "description": "Charita - OA",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "Cikonio",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.14.1"
+  }
+}
